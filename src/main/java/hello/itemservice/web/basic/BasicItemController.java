@@ -91,10 +91,16 @@ public class BasicItemController {
      * @ModelAttribute 자체도 생략가능하다. 대상 객체는 모델에 자동 등록된다.
      * 나머지 사항은 기존과 동일하다.
      */
-    @PostMapping("/add")
+//    @PostMapping("/add")
     public String addItemV4(Item item){
         itemRepository.save(item);
         return "basic/item";
+    }
+
+    @PostMapping("/add")
+    public String addItemV5(Item item){
+        itemRepository.save(item);
+        return "redirect:/basic/items/" + item.getId();
     }
 
     @GetMapping("/{itemId}/edit")
