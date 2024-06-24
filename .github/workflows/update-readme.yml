@@ -25,10 +25,26 @@ jobs:
           
       - name: Generate Directory Tree
         run: |
+          # Read existing README content
+          if [ -f README.md ]; then
+            existing_content=$(cat README.md)
+          else
+            existing_content=""
+          fi
+
+          # Remove existing tree structure if present
+          new_content=$(echo "$existing_content" | sed '/# Project Directory Structure/,$d')
+
+          # Generate new directory tree structure
+          tree_structure=$(tree --dirsfirst -a -I '.git')
+
+          # Combine new tree structure with remaining content
           echo "# Project Directory Structure" > README.md
           echo "\`\`\`" >> README.md
-          tree --dirsfirst -a -I '.git' >> README.md  # .git 디렉토리를 무시하고 디렉토리 구조를 README.md에 추가
+          echo "$tree_structure" >> README.md
           echo "\`\`\`" >> README.md
+          echo "" >> README.md
+          echo "$new_content" >> README.md
           
       - name: Commit and push changes
         run: |
