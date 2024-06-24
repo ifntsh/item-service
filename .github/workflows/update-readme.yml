@@ -28,7 +28,7 @@ jobs:
           # Read existing README content if it exists
           if [ -f README.md ]; then
             # Remove the existing directory structure section if it exists
-            existing_content=$(sed '/^# Project Directory Structure$/d' README.md)
+            existing_content=$(sed '/# Project Directory Structure/,/```/d' README.md)
           else
             existing_content=""
           fi
