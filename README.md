@@ -1,14 +1,58 @@
-# item-service
-스프링 MVC 웹 페이지
+# Project Directory Structure
+```
+.
+├── .github
+│   └── workflows
+│       └── update-readme.yml
+├── gradle
+│   └── wrapper
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── hello
+│   │   │       └── itemservice
+│   │   │           ├── domain
+│   │   │           │   └── item
+│   │   │           │       ├── Item.java
+│   │   │           │       └── ItemRepository.java
+│   │   │           ├── web
+│   │   │           │   └── basic
+│   │   │           │       └── BasicItemController.java
+│   │   │           └── ItemServiceApplication.java
+│   │   └── resources
+│   │       ├── static
+│   │       │   ├── css
+│   │       │   │   └── bootstrap.min.css
+│   │       │   ├── html
+│   │       │   │   ├── addForm.html
+│   │       │   │   ├── editForm.html
+│   │       │   │   ├── item.html
+│   │       │   │   └── items.html
+│   │       │   └── index.html
+│   │       ├── templates
+│   │       │   └── basic
+│   │       │       ├── addForm.html
+│   │       │       ├── editForm.html
+│   │       │       ├── item.html
+│   │       │       └── items.html
+│   │       └── application.properties
+│   └── test
+│       └── java
+│           └── hello
+│               └── itemservice
+│                   ├── domain
+│                   │   └── item
+│                   │       └── ItemRepositoryTest.java
+│                   └── ItemServiceApplicationTests.java
+├── .gitignore
+├── HELP.md
+├── README.md
+├── build.gradle
+├── gradlew
+├── gradlew.bat
+└── settings.gradle
 
-1. 프로젝트 생성
-2. 요구사항 분석
-3. 상품 도메인 개발
-4. 상품 서비스 HTML
-5. 상품 목록 - 타임리프
-6. 상품 상세
-7. 상품 등록 폼
-8. 상품 등록 처리 - @ModelAttribute
-9. 상품 수정
-10. PRG Post/Redirect/Get
-11. RedirectAttributes
+25 directories, 27 files
+```
