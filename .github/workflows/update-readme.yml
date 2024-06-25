@@ -28,8 +28,15 @@ jobs:
 
       - name: Update README.md
         run: |
+          # Create a temporary file to store the new README content
           TEMP_README=$(mktemp)
-          awk 'BEGIN {found=0} /<!-- START TREE -->/ {print; found=1; while (getline < "tree_structure.txt") print; next} /<!-- END TREE -->/ {found=0} !found' README.md > $TEMP_README
+          # Replace the tree section in README.md
+          awk '
+            BEGIN { found=0 }
+            /<!-- START TREE -->/ { print; found=1; while (getline < "tree_structure.txt") print; next }
+            /<!-- END TREE -->/ { found=0 }
+            !found
+          ' README.md > $TEMP_README
           mv $TEMP_README README.md
 
       - name: Commit and push changes
