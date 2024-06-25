@@ -1,27 +1,33 @@
 # Project Directory Structure
 <!-- START TREE -->
+<!-- START TREE -->
 ```
-├── .github
-│   └── workflows
-│       └── update-readme.yml
+.
+├── HELP.md
+├── README.md
+├── build.gradle
 ├── gradle
 │   └── wrapper
 │       ├── gradle-wrapper.jar
 │       └── gradle-wrapper.properties
+├── gradlew
+├── gradlew.bat
+├── settings.gradle
 ├── src
 │   ├── main
 │   │   ├── java
 │   │   │   └── hello
 │   │   │       └── itemservice
+│   │   │           ├── ItemServiceApplication.java
 │   │   │           ├── domain
 │   │   │           │   └── item
 │   │   │           │       ├── Item.java
 │   │   │           │       └── ItemRepository.java
-│   │   │           ├── web
-│   │   │           │   └── basic
-│   │   │           │       └── BasicItemController.java
-│   │   │           └── ItemServiceApplication.java
+│   │   │           └── web
+│   │   │               └── basic
+│   │   │                   └── BasicItemController.java
 │   │   └── resources
+│   │       ├── application.properties
 │   │       ├── static
 │   │       │   ├── css
 │   │       │   │   └── bootstrap.min.css
@@ -31,32 +37,25 @@
 │   │       │   │   ├── item.html
 │   │       │   │   └── items.html
 │   │       │   └── index.html
-│   │       ├── templates
-│   │       │   └── basic
-│   │       │       ├── addForm.html
-│   │       │       ├── editForm.html
-│   │       │       ├── item.html
-│   │       │       └── items.html
-│   │       └── application.properties
+│   │       └── templates
+│   │           └── basic
+│   │               ├── addForm.html
+│   │               ├── editForm.html
+│   │               ├── item.html
+│   │               └── items.html
 │   └── test
 │       └── java
 │           └── hello
 │               └── itemservice
-│                   ├── domain
-│                   │   └── item
-│                   │       └── ItemRepositoryTest.java
-│                   └── ItemServiceApplicationTests.java
-├── .gitignore
-├── HELP.md
-├── README.md
-├── build.gradle
-├── gradlew
-├── gradlew.bat
-└── settings.gradle
+│                   ├── ItemServiceApplicationTests.java
+│                   └── domain
+│                       └── item
+│                           └── ItemRepositoryTest.java
+└── tree_structure.txt
 
-25 directories, 27 files
+23 directories, 26 files
 ```
-
+<!-- END TREE -->
 <!-- END TREE -->
 
 
