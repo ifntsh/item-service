@@ -1,6 +1,6 @@
 # Project Directory Structure
 <!-- START TREE -->
-
+```
 ├── .github
 │   └── workflows
 │       └── update-readme.yml
