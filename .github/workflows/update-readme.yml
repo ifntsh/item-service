@@ -30,12 +30,12 @@ jobs:
         run: |
           # Create a temporary file to store the new README content
           TEMP_README=$(mktemp)
-          # Replace the tree section in README.md
+          # Remove existing tree structure and add new tree structure
           awk '
-            BEGIN { found=0 }
-            /<!-- START TREE -->/ { print; found=1; while (getline < "tree_structure.txt") print; next }
-            /<!-- END TREE -->/ { found=0 }
-            !found
+            BEGIN {delete=0}
+            /<!-- START TREE -->/ {print; delete=1; while (getline < "tree_structure.txt") print; next}
+            /<!-- END TREE -->/ {print; delete=0; next}
+            !delete {print}
           ' README.md > $TEMP_README
           mv $TEMP_README README.md
 
