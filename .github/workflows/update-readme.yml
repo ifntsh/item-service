@@ -1,1 +1,47 @@
+name: update-readme
 
+on:
+  push:
+    branches:
+      - main  # main 브랜치에 푸시될 때 실행
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
+      - name: Install tree command
+        run: |
+          sudo apt-get update && sudo apt-get install -y tree  # tree 명령어 설치
+          
+      - name: Generate tree structure
+        run: |
+          echo "<!-- START TREE -->" > tree_structure.txt
+          echo '```' >> tree_structure.txt
+          tree >> tree_structure.txt
+          echo '```' >> tree_structure.txt
+          echo "<!-- END TREE -->" >> tree_structure.txt
+
+      - name: Update README.md
+        run: |
+          TEMP_README=$(mktemp)
+          awk 'BEGIN {found=0} /<!-- START TREE -->/ {print; found=1; while (getline < "tree_structure.txt") print; next} /<!-- END TREE -->/ {found=0} !found' README.md > $TEMP_README
+          mv $TEMP_README README.md
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Update README.md with directory tree [skip ci]"
+            git push
+          else
+            echo "No changes to commit"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
